@@ -1,0 +1,54 @@
+@import "tailwindcss";
+ 
+@theme {
+  --animate-float: float 8s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.9s ease-out both;
+  --animate-slow-zoom: slow-zoom 30s ease-in-out infinite alternate;
+ 
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-28px) scale(1.05);
+    }
+  }
+ 
+  @keyframes slow-zoom {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.12);
+    }
+  }
+ 
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+ 
+/* Fluid scaling: Tailwind sizes are rem-based, so growing the root font size
+   on big screens scales text, spacing and the max-w-6xl containers together.
+   Stays at the normal 16px up to 1920px wide, so each section fits one
+   screen on laptops and full-HD monitors. It only grows on bigger screens
+   (2560px wide -> ~21px) and is also limited by the window height, so
+   content never grows taller than the screen. Capped at 30px. */
+html {
+  font-size: clamp(16px, min(0.833vw, 1.65vh), 30px);
+  scroll-behavior: smooth;
+}
+ 
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  overflow-x: hidden; /* never allow sideways scrolling on small screens */
+}
