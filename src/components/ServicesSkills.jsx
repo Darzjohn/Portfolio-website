@@ -6,29 +6,55 @@ const services = [
     icon: '</>',
     title: 'Web Development',
     description: 'Websites & digital projects.',
-    items: ['Service one', 'Service two', 'Service three'],
+    items: [
+      'Responsive portfolio & business websites',
+      'Landing pages & contact forms',
+      'Modern, mobile-friendly design',
+    ],
   },
   {
     icon: '🧑‍💻',
     title: 'Virtual Assistance',
     description: 'Organization & admin support.',
-    items: ['Service one', 'Service two', 'Service three'],
+    items: [
+      'Email & calendar management',
+      'Data entry & document preparation',
+      'Social media support',
+    ],
   },
   {
     icon: '🎬',
     title: 'AI Video Creation',
     description: 'AI-made product short videos.',
-    items: ['Service one', 'Service two', 'Service three'],
+    items: [
+      'AI product short videos',
+      'Social media reels & ads',
+      'Script, visuals & editing',
+    ],
   },
   {
     icon: '🎨',
     title: 'AI Graphic Design',
     description: 'AI-assisted visuals.',
-    items: ['Service one', 'Service two', 'Service three'],
+    items: [
+      'Social media posts & banners',
+      'Logos & branding visuals',
+      'Product & promotional graphics',
+    ],
   },
 ]
  
-const tools = ['Tool one', 'Tool two', 'Tool three', 'Tool four']
+const tools = [
+  'VS Code',
+  'CapCut',
+  'Claude AI',
+  'ChatGPT',
+  'Google Flow',
+  'Pinterest',
+  'Canva',
+  'Microsoft Office',
+  'Google Workspace',
+]
  
 function ServicesSkills() {
   return (
@@ -66,7 +92,7 @@ function ServicesSkills() {
           </span>
         </h2>
         <p className="mt-4 max-w-2xl text-base text-emerald-50/75 sm:text-lg">
-          Your services, skills, and tools.
+          What I can do for your business, and the tools I use to get it done.
         </p>
  
         {/* Service cards */}
@@ -76,12 +102,12 @@ function ServicesSkills() {
               key={service.title}
               className="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl shadow-black/20 backdrop-blur-sm transition duration-300 hover:-translate-y-2 hover:border-emerald-300/40 hover:bg-white/15"
             >
-             <span
+              <span
                 aria-hidden="true"
-                  className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl border border-emerald-300/30 bg-emerald-300/10 text-4xl text-lime-300"
->
-              {service.icon}
-            </span>
+                className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl border border-emerald-300/30 bg-emerald-300/10 text-4xl text-lime-300"
+              >
+                {service.icon}
+              </span>
               <h3 className="text-xl font-semibold text-white">
                 {service.title}
               </h3>
@@ -93,11 +119,11 @@ function ServicesSkills() {
                 {service.items.map((item) => (
                   <li
                     key={item}
-                    className="flex items-center gap-2 text-emerald-50/85"
+                    className="flex items-start gap-2 text-emerald-50/85"
                   >
                     <span
                       aria-hidden="true"
-                      className="h-1.5 w-1.5 shrink-0 rounded-full bg-lime-300"
+                      className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-lime-300"
                     />
                     {item}
                   </li>
