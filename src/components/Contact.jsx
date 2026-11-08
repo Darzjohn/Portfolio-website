@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
+import resume from '../assets/Aligato_Resume.pdf'
  
 const EMAIL = 'dorisjohnaligato@gmail.com'
  
@@ -11,10 +12,15 @@ const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}&su=${e
   'Project Inquiry'
 )}`
  
-// Replace the Resume link with your PDF later (e.g. '/resume.pdf').
+// The Resume link uses the PDF in src/assets/Aligato_Resume.pdf.
 // Add your profile name to the end of the LinkedIn link.
 const socialLinks = [
-  { icon: '📄', label: 'Resume', href: '#' },
+  {
+    icon: '📄',
+    label: 'Resume',
+    href: resume,
+    download: 'Aligato_Resume.pdf',
+  },
   { icon: '💼', label: 'LinkedIn', href: 'https://www.linkedin.com/in/' },
   { icon: '💻', label: 'GitHub', href: 'https://github.com/Darzjohn' },
 ]
@@ -238,7 +244,12 @@ function Contact() {
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    target={item.href.startsWith('http') ? '_blank' : undefined}
+                    download={item.download}
+                    target={
+                      item.href.startsWith('http') || item.download
+                        ? '_blank'
+                        : undefined
+                    }
                     rel="noopener noreferrer"
                     className="group flex h-full flex-col items-center gap-2 rounded-2xl border border-white/15 bg-white/10 px-2 py-4 text-center backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/20"
                   >

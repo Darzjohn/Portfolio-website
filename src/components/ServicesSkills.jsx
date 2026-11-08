@@ -9,7 +9,7 @@ const services = [
     items: ['Service one', 'Service two', 'Service three'],
   },
   {
-    icon: '🌿',
+    icon: '🧑‍💻',
     title: 'Virtual Assistance',
     description: 'Organization & admin support.',
     items: ['Service one', 'Service two', 'Service three'],
@@ -76,12 +76,12 @@ function ServicesSkills() {
               key={service.title}
               className="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-xl shadow-black/20 backdrop-blur-sm transition duration-300 hover:-translate-y-2 hover:border-emerald-300/40 hover:bg-white/15"
             >
-              <span
+             <span
                 aria-hidden="true"
-                className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-emerald-300/30 bg-emerald-300/10 text-xl text-lime-300"
-              >
-                {service.icon}
-              </span>
+                  className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl border border-emerald-300/30 bg-emerald-300/10 text-4xl text-lime-300"
+>
+              {service.icon}
+            </span>
               <h3 className="text-xl font-semibold text-white">
                 {service.title}
               </h3>
