@@ -5,12 +5,16 @@ import bgTree from '../assets/bg-tree.jpg'
 import sumisho from '../assets/sumisho.png'
 import sumisho2 from '../assets/sumisho2.png'
 import sumisho3 from '../assets/sumisho3.png'
+// Design images live in src/assets/Design/
+import hanasui from '../assets/Design/hanasui-serum.png'
+import icedSeasalt from '../assets/Design/Iced-seasalt.jpg'
  
 // category: 'Web' | 'Video' | 'Design'
 // images: list of screenshots (2+ images becomes an automatic slideshow)
 // youtube: YouTube video ID (the part after /shorts/ or ?v=). Shows a
 //          thumbnail with a play button that opens the video in a pop-up.
 // featured: true = wide card with the slideshow on the left, details on the right
+// Design cards with an image and link '#' open the image full-size when clicked.
 const projects = [
   {
     title: 'Sumisho Motor Finance Quote Tool',
@@ -61,10 +65,18 @@ const projects = [
     link: 'https://youtube.com/shorts/rppLT3HHgzk',
   },
   {
-    title: 'Project Title Three',
+    title: 'Hanasui Vitamin C Glow Serum',
     category: 'Design',
-    description: 'Short description of the graphic design project.',
-    images: [],
+    description: 'AI-assisted product graphic for Hanasui Vitamin C Glow Serum.',
+    images: [hanasui],
+    video: '',
+    link: '#',
+  },
+  {
+    title: 'Iced Sea Salt',
+    category: 'Design',
+    description: 'AI-assisted product graphic for Iced Sea Salt.',
+    images: [icedSeasalt],
     video: '',
     link: '#',
   },
@@ -353,11 +365,27 @@ function SelectedWork() {
                       className="h-full w-full object-cover"
                     />
                   ) : project.images.length ? (
-                    <img
-                      src={project.images[0]}
-                      alt={project.title}
-                      className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"
-                    />
+                    /* Image: shown in full, click to enlarge */
+                    <button
+                      type="button"
+                      onClick={() => setLightbox(project.images[0])}
+                      aria-label={`Enlarge ${project.title}`}
+                      className="relative h-full w-full cursor-zoom-in overflow-hidden"
+                    >
+                      {/* Blurred copy of the image fills the card, like the video cards */}
+                      <img
+                        src={project.images[0]}
+                        alt=""
+                        aria-hidden="true"
+                        className="absolute inset-0 h-full w-full scale-125 object-cover blur-xl"
+                      />
+                      <span className="absolute inset-0 bg-emerald-950/30" />
+                      <img
+                        src={project.images[0]}
+                        alt={project.title}
+                        className="relative h-full w-full object-contain transition duration-500 group-hover:scale-105"
+                      />
+                    </button>
                   ) : (
                     <div className="flex h-full w-full items-center justify-center text-4xl text-lime-300/80">
                       {placeholderIcons[project.category]}
@@ -376,17 +404,32 @@ function SelectedWork() {
                   <p className="mt-2 text-emerald-50/70">
                     {project.description}
                   </p>
-                  <a
-                    href={project.link}
-                    target={project.link.startsWith('http') ? '_blank' : undefined}
-                    rel="noopener noreferrer"
-                    className="mt-5 inline-block text-sm font-semibold text-lime-300 transition hover:text-lime-200"
-                  >
-                    {project.youtube ? 'Watch on YouTube' : 'View project'}{' '}
-                    <span className="inline-block transition group-hover:translate-x-1">
-                      ↗
-                    </span>
-                  </a>
+ 
+                  {project.link === '#' && project.images.length ? (
+                    /* No external link: open the image full-size instead */
+                    <button
+                      type="button"
+                      onClick={() => setLightbox(project.images[0])}
+                      className="mt-5 inline-block text-sm font-semibold text-lime-300 transition hover:text-lime-200"
+                    >
+                      View design{' '}
+                      <span className="inline-block transition group-hover:translate-x-1">
+                        ↗
+                      </span>
+                    </button>
+                  ) : (
+                    <a
+                      href={project.link}
+                      target={project.link.startsWith('http') ? '_blank' : undefined}
+                      rel="noopener noreferrer"
+                      className="mt-5 inline-block text-sm font-semibold text-lime-300 transition hover:text-lime-200"
+                    >
+                      {project.youtube ? 'Watch on YouTube' : 'View project'}{' '}
+                      <span className="inline-block transition group-hover:translate-x-1">
+                        ↗
+                      </span>
+                    </a>
+                  )}
                 </div>
               </article>
             )
