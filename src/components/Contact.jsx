@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import resume from '../assets/Aligato_Resume.pdf'
+import resumeLogo from '../assets/Logo/Resume-logo.jpg'
+import envelopeLogo from '../assets/Logo/Envelop-logo.jpg'
+import githubLogo from '../assets/Logo/Github-logo.jpg'
+import linkedinLogo from '../assets/Logo/Linkin-logo.jpg'
+import tiktokLogo from '../assets/Logo/Tiktok-logo.jpg'
+import youtubeLogo from '../assets/Logo/Youtube-logo.jpg'
  
 const EMAIL = 'dorisjohnaligato@gmail.com'
  
@@ -16,13 +22,31 @@ const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}&su=${e
 // Add your profile name to the end of the LinkedIn link.
 const socialLinks = [
   {
-    icon: '📄',
+    image: resumeLogo,
     label: 'Resume',
     href: resume,
     download: 'Aligato_Resume.pdf',
   },
-  { icon: '💼', label: 'LinkedIn', href: 'https://www.linkedin.com/in/' },
-  { icon: '💻', label: 'GitHub', href: 'https://github.com/Darzjohn' },
+  {
+    image: linkedinLogo,
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/',
+  },
+  {
+    image: githubLogo,
+    label: 'GitHub',
+    href: 'https://github.com/Darzjohn',
+  },
+  {
+    image: tiktokLogo,
+    label: 'TikTok',
+    href: 'https://www.tiktok.com/@donritoscinco',
+  },
+  {
+    image: youtubeLogo,
+    label: 'YouTube',
+    href: 'https://www.youtube.com/@DonritosCinco',
+  },
 ]
  
 const fieldClass =
@@ -216,12 +240,12 @@ function Contact() {
               className="group mt-6 block rounded-2xl border border-emerald-300/30 bg-gradient-to-br from-emerald-400/20 via-emerald-300/10 to-lime-300/10 p-5 shadow-lg shadow-emerald-900/30 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-lime-300/60 hover:from-emerald-400/30"
             >
               <div className="flex items-center gap-4">
-                <span
+                <img
+                  src={envelopeLogo}
+                  alt=""
                   aria-hidden="true"
-                  className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-emerald-300/30 bg-emerald-300/15 text-3xl"
-                >
-                  ✉️
-                </span>
+                  className="h-14 w-14 shrink-0 rounded-2xl bg-white object-contain p-1"
+                />
                 <span className="min-w-0">
                   <span className="block text-xs font-medium uppercase tracking-widest text-lime-200/80">
                     Email me
@@ -238,10 +262,10 @@ function Contact() {
               </span>
             </a>
  
-            {/* Resume and social links */}
-            <ul className="mt-5 grid grid-cols-3 gap-3">
+            {/* Resume and social links (centered so the last row looks balanced) */}
+            <ul className="mt-5 flex flex-wrap justify-center gap-3">
               {socialLinks.map((item) => (
-                <li key={item.label}>
+                <li key={item.label} className="w-[calc(33.333%-0.5rem)]">
                   <a
                     href={item.href}
                     download={item.download}
@@ -253,12 +277,21 @@ function Contact() {
                     rel="noopener noreferrer"
                     className="group flex h-full flex-col items-center gap-2 rounded-2xl border border-white/15 bg-white/10 px-2 py-4 text-center backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-white/20"
                   >
-                    <span
-                      aria-hidden="true"
-                      className="flex h-12 w-12 items-center justify-center rounded-xl border border-emerald-300/30 bg-emerald-300/10 text-2xl"
-                    >
-                      {item.icon}
-                    </span>
+                    {item.image ? (
+                      <img
+                        src={item.image}
+                        alt=""
+                        aria-hidden="true"
+                        className="h-12 w-12 rounded-xl bg-white object-contain p-1"
+                      />
+                    ) : (
+                      <span
+                        aria-hidden="true"
+                        className="flex h-12 w-12 items-center justify-center rounded-xl border border-emerald-300/30 bg-emerald-300/10 text-2xl"
+                      >
+                        {item.icon}
+                      </span>
+                    )}
                     <span className="text-sm font-medium text-white">
                       {item.label}
                     </span>

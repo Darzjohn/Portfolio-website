@@ -1,5 +1,10 @@
 import logo from '../assets/logo-Doris.png'
  
+const socials = [
+  { label: 'TikTok', href: 'https://www.tiktok.com/@donritoscinco' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@DonritosCinco' },
+]
+ 
 function Footer() {
   return (
     <footer className="border-t border-white/10 bg-emerald-950 px-6 py-6">
@@ -16,12 +21,25 @@ function Footer() {
           </p>
         </div>
  
-        <a
-          href="#top"
-          className="text-lime-300 transition hover:text-lime-200"
-        >
-          Back to top ↑
-        </a>
+        <div className="flex items-center gap-5">
+          {socials.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition hover:text-white"
+            >
+              {item.label}
+            </a>
+          ))}
+          <a
+            href="#top"
+            className="text-lime-300 transition hover:text-lime-200"
+          >
+            Back to top ↑
+          </a>
+        </div>
       </div>
     </footer>
   )
