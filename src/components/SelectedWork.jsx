@@ -65,6 +65,15 @@ const projects = [
     link: 'https://youtube.com/shorts/rppLT3HHgzk',
   },
   {
+    title: 'AI Product Short Video 4',
+    category: 'Video',
+    description: 'Sample AI-made product short video.',
+    images: [],
+    video: '',
+    youtube: 'n1a3Cjqdjec',
+    link: 'https://youtube.com/shorts/n1a3Cjqdjec',
+  },
+  {
     title: 'Hanasui Vitamin C Glow Serum',
     category: 'Design',
     description: 'AI-assisted product graphic for Hanasui Vitamin C Glow Serum.',
